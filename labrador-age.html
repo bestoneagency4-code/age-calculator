@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Labrador Age in Human Years (Vet-Aligned 2025)</title>
+<meta name="description" content="Calculate your Labrador’s age in human years using a modern veterinary ageing model. Free, accurate, instant.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/calc.js" defer></script>
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"FAQPage",
+ "mainEntity":[{
+   "@type":"Question",
+   "name":"How old is a 7-year-old Labrador in human years?",
+   "acceptedAnswer":{
+     "@type":"Answer",
+     "text":"A 7-year-old Labrador is approximately 62 human years old using a modern veterinary ageing model."
+   }
+ }]
+}
+</script>
+</head>
+
+<body>
+<header><h1>🐾 Labrador Age Calculator</h1></header>
+
+<main>
+<section class="calc-box">
+  <input type="hidden" id="breed" value="3">
+  <label for="dob">Labrador Birth Date</label>
+  <input type="date" id="dob" required>
+  <button id="calcBtn">Calculate →</button>
+
+  <div id="result" class="hidden">
+    <p>Your Labrador is <strong><span id="hy"></span></strong> human years old</p>
+    <p><strong id="stage"></strong></p>
+    <p id="tip"></p>
+  </div>
+</section>
+
+<article>
+<h2>Labrador Age Chart</h2>
+<ul>
+  <li>1 year ≈ 31 human years</li>
+  <li>2 years ≈ 42 human years</li>
+  <li>7 years ≈ 62 human years</li>
+  <li>12 years ≈ 85 human years</li>
+</ul>
+</article>
+</main>
+
+<footer><p><a href="index.html">← Main Calculator</a></p></footer>
+</body>
+</html>
