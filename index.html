@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Dog Age Calculator (Vet-Aligned 2025 Formula)</title>
+
+  <meta name="description" content="Convert dog years to human years using a modern veterinary-aligned model based on AAHA life-stage guidelines and DNA-age research. Breed & weight adjusted." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="canonical" href="https://YOURDOMAIN.com/" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <meta property="og:title" content="Dog Age Calculator – Modern Vet Formula">
+  <meta property="og:description" content="Accurate dog-to-human age conversion using modern veterinary science. Free, instant, breed-adjusted.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://YOURDOMAIN.com/">
+
+  <script src="assets/calc.js" defer></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Dog Age Calculator",
+    "url": "https://YOURDOMAIN.com/",
+    "description": "Modern dog age calculator based on veterinary life-stage guidelines and DNA ageing research."
+  }
+  </script>
+</head>
+
+<body>
+<header>
+  <h1><span class="paw">🐾</span> Dog Age Calculator</h1>
+  <p>Vet-aligned 2025 ageing model (no ×7 myth)</p>
+</header>
+
+<main>
+<section class="calc-box">
+  <label for="breed">Breed / Size Group</label>
+  <select id="breed">
+    <option value="0">Toy (< 12 lb)</option>
+    <option value="1">Small (12–25 lb)</option>
+    <option value="2">Medium (25–50 lb)</option>
+    <option value="3">Large (50–90 lb)</option>
+    <option value="4">Giant (> 90 lb)</option>
+  </select>
+
+  <label for="dob">Dog’s Birth Date</label>
+  <input type="date" id="dob" required />
+
+  <button id="calcBtn">Calculate Human Age →</button>
+
+  <div id="result" class="hidden">
+    <h2>Your dog is <span id="hy"></span> human years old</h2>
+    <p>Life stage: <strong id="stage"></strong></p>
+    <p id="tip"></p>
+
+    <div class="cta">
+      <a class="chewy" href="https://www.chewy.com/s?query=senior+dog+supplements&utm_content=YOURID" target="_blank" rel="noopener">Senior Dog Supplements</a>
+      <a class="vet" href="tel:+1-800-GET-VET-NOW">Book Vet Call</a>
+    </div>
+
+    <div class="upsell">
+      <a href="https://gumroad.com/l/YOURID" target="_blank" rel="noopener">📘 Senior Dog Care Planner – $5</a>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <h2>How this calculator works</h2>
+  <ul>
+    <li>Dogs age rapidly in the first 2 years (logarithmic curve)</li>
+    <li>After year 2, ageing speed depends on breed size</li>
+    <li>Life stages follow AAHA veterinary guidelines</li>
+  </ul>
+</section>
+</main>
+
+<footer>
+  <p>© 2025 Dog Age Calculator • <a href="science.html">Science</a> • <a href="labrador-age.html">Labrador Calculator</a></p>
+</footer>
+</body>
+</html>
