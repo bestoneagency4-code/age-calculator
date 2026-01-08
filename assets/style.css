@@ -1,0 +1,96 @@
+:root{
+  --accent:#ff7b54;
+  --dark:#222;
+  --light:#fff9f5;
+  --grey:#666;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  margin:0;
+  background:var(--light);
+  color:var(--dark);
+}
+
+header{
+  text-align:center;
+  padding:2rem 1rem;
+  background:var(--accent);
+  color:#fff;
+}
+
+header h1{
+  margin:0;
+  font-weight:700;
+}
+
+.paw{margin-right:.5rem}
+
+.calc-box{
+  max-width:480px;
+  margin:2rem auto;
+  background:#fff;
+  padding:2rem;
+  border-radius:12px;
+  box-shadow:0 5px 25px rgba(0,0,0,.08);
+}
+
+label{
+  display:block;
+  margin-top:1rem;
+  font-weight:500;
+}
+
+input,select{
+  width:100%;
+  padding:.75rem;
+  border:1px solid #ddd;
+  border-radius:6px;
+  margin-top:.25rem;
+  font-size:1rem;
+}
+
+button{
+  width:100%;
+  margin-top:1.5rem;
+  padding:.9rem;
+  background:var(--accent);
+  color:#fff;
+  font-size:1.1rem;
+  border:0;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+button:hover{filter:brightness(1.1)}
+
+.hidden{display:none}
+
+#result{text-align:center;margin-top:1.5rem}
+
+.cta{
+  display:flex;
+  gap:1rem;
+  margin-top:1rem;
+}
+
+.cta a{
+  flex:1;
+  padding:.75rem;
+  text-decoration:none;
+  border-radius:6px;
+  font-weight:600;
+  color:#fff;
+}
+
+.chewy{background:#004a97}
+.vet{background:#28a745}
+
+.upsell{margin-top:1.5rem;font-size:.95rem}
+
+footer{
+  text-align:center;
+  padding:2rem 1rem;
+  font-size:.9rem;
+  color:var(--grey);
+}
