@@ -100,332 +100,143 @@
   color: #777;
 }
 
-/* :root{
-  --accent:#ff7b54;
-  --dark:#222;
-  --light:#fff9f5;
-  --grey:#666;
-}
-
-body{
-  font-family:'Poppins',sans-serif;
-  margin:0;
-  background:var(--light);
-  color:var(--dark);
-}
-
-header{
-  text-align:center;
-  padding:2rem 1rem;
-  background:var(--accent);
-  color:#fff;
-}
-
-header h1{
-  margin:0;
-  font-weight:700;
-}
-
-.paw{margin-right:.5rem}
-
-.calc-box{
-  max-width:480px;
-  margin:2rem auto;
-  background:#fff;
-  padding:2rem;
-  border-radius:12px;
-  box-shadow:0 5px 25px rgba(0,0,0,.08);
-}
-
-label{
-  display:block;
-  margin-top:1rem;
-  font-weight:500;
-}
-
-input,select{
-  width:100%;
-  padding:.75rem;
-  border:1px solid #ddd;
-  border-radius:6px;
-  margin-top:.25rem;
-  font-size:1rem;
-}
-
-button{
-  width:100%;
-  margin-top:1.5rem;
-  padding:.9rem;
-  background:var(--accent);
-  color:#fff;
-  font-size:1.1rem;
-  border:0;
-  border-radius:6px;
-  cursor:pointer;
-}
-
-button:hover{filter:brightness(1.1)}
-
-.hidden{display:none}
-
-#result{text-align:center;margin-top:1.5rem}
-
-.cta{
-  display:flex;
-  gap:1rem;
-  margin-top:1rem;
-}
-
-.cta a{
-  flex:1;
-  padding:.75rem;
-  text-decoration:none;
-  border-radius:6px;
-  font-weight:600;
-  color:#fff;
-}
-
-.chewy{background:#004a97}
-.vet{background:#28a745}
-
-.upsell{margin-top:1.5rem;font-size:.95rem}
-
-footer{
-  text-align:center;
-  padding:2rem 1rem;
-  font-size:.9rem;
-  color:var(--grey);
-} */
-/* ==========================
-   GLOBAL RESET & VARIABLES
-========================== */
+/* --- Base Styles --- */
 :root {
-  --accent: #ff7b54;
-  --dark: #222;
-  --light: #fff9f5;
-  --grey: #666;
-  --max-width: 640px;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+    --primary-color: #a34e2b; /* Terracotta/Burnt Orange */
+    --bg-color: #f7f2e8;      /* Cream background */
+    --text-color: #333;
+    --card-bg: #ffffff;
+    --border-color: #d1cfc7;
 }
 
 body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: var(--light);
-  color: var(--dark);
-  line-height: 1.6;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* ==========================
-   HEADER
-========================== */
+/* --- Header Section --- */
 header {
-  width: 100%;
-  background: var(--accent);
-  color: #fff;
-  text-align: center;
-  padding: 2rem 1rem;
+    background-color: var(--primary-color);
+    width: 100%;
+    padding: 40px 0;
+    text-align: center;
+    color: white;
 }
 
 header h1 {
-  margin: 0;
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
-  font-weight: 700;
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: 700;
 }
 
 header p {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  opacity: 0.95;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    margin-top: 10px;
+    opacity: 0.9;
 }
 
-.paw {
-  margin-right: 0.4rem;
-}
-
-/* ==========================
-   MAIN LAYOUT
-========================== */
+/* --- Main Layout --- */
 main {
-  width: 100%;
-  max-width: var(--max-width);
-  padding: 1.5rem 1rem 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin-top: -40px; /* Pulls the card up into the header slightly */
+    padding: 20px;
 }
 
-/* ==========================
-   CALCULATOR BOX
-========================== */
 .calc-box {
-  width: 100%;
-  background: #fff;
-  padding: 2rem 1.5rem;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 4px;
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1); /* Hard shadow style from image */
+    border: 1px solid var(--border-color);
 }
 
-.calc-box h2 {
-  margin-bottom: 1rem;
-}
-
-/* ==========================
-   FORM ELEMENTS
-========================== */
+/* --- Form Elements --- */
 label {
-  width: 100%;
-  text-align: left;
-  margin-top: 1.1rem;
-  font-weight: 500;
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: #555;
 }
 
-input,
-select {
-  width: 100%;
-  margin-top: 0.4rem;
-  padding: 0.75rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  background: #fff;
-}
-
-button {
-  width: 100%;
-  margin-top: 1.6rem;
-  padding: 0.9rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 8px;
-  border: none;
-  background: var(--accent);
-  color: #fff;
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
-}
-
-/* ==========================
-   RESULT
-========================== */
-.hidden {
-  display: none;
-}
-
-#result {
-  margin-top: 1.8rem;
-  text-align: center;
-}
-
-#result h2 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-}
-
-/* ==========================
-   CTA BUTTONS
-========================== */
-.cta {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 1.2rem;
-  width: 100%;
-}
-
-.cta a {
-  flex: 1;
-  padding: 0.75rem;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  text-align: center;
-  font-size: 0.95rem;
-}
-
-a.chewy {
-  background: #004a97;
-  color: #fff;
-}
-
-a.vet {
-  background: #28a745;
-  color: #fff;
-}
-
-/* ==========================
-   UPSELL
-========================== */
-.upsell {
-  margin-top: 1.5rem;
-  font-size: 0.95rem;
-}
-
-/* ==========================
-   FAQ / CONTENT SECTIONS
-========================== */
-section,
-article {
-  width: 100%;
-  margin-top: 2.5rem;
-  text-align: center;
-}
-
-ul {
-  padding-left: 0;
-  list-style: none;
-}
-
-ul li {
-  margin: 0.5rem 0;
-}
-
-/* ==========================
-   FOOTER
-========================== */
-footer {
-  width: 100%;
-  text-align: center;
-  padding: 2rem 1rem;
-  font-size: 0.9rem;
-  color: var(--grey);
-}
-
-footer a {
-  color: inherit;
-  text-decoration: underline;
-}
-
-/* ==========================
-   RESPONSIVE TWEAKS
-========================== */
-@media (max-width: 420px) {
-  .calc-box {
-    padding: 1.6rem 1.2rem;
-  }
-
-  button {
+select, input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 25px;
+    border: 1px solid var(--border-color);
+    background-color: #fdfcf9;
+    font-family: inherit;
     font-size: 1rem;
-  }
-
-  .cta {
-    flex-direction: column;
-  }
+    box-sizing: border-box;
 }
 
+.hint {
+    display: block;
+    font-style: italic;
+    color: #888;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+/* --- Button --- */
+#calcBtn {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border-bottom: 4px solid #7a3a20; /* Subtle depth */
+}
+
+#calcBtn:hover {
+    background-color: #8c4124;
+}
+
+#calcBtn:active {
+    border-bottom-width: 0;
+    transform: translateY(2px);
+}
+
+/* --- Result Area --- */
+#result {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px dashed var(--border-color);
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- Trust/Info Section --- */
+.trust {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+footer {
+    margin: 40px 0;
+    font-size: 0.75rem;
+    color: #999;
+}
