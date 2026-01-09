@@ -1,6 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <title>German Shepherd Age Calculator & Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <script src="assets/gsd-calc.js" defer></script>
+</head>
+
+<body>
+<header>
+  <h1>🐕 German Shepherd Guide</h1>
+  <p>Breed-Specific Aging & Care Information</p>
+</header>
+
+<main>
+  <section class="calc-box">
+    <h2>GSD Age Calculator</h2>
+    <label for="dob">Puppy's Date of Birth</label>
+    <input type="date" id="dob" required />
+    
+    <input type="hidden" id="breed" value="2">
+
+    <button id="calcBtn">Calculate Human Age</button>
+
+    <div id="result" class="hidden">
+      <h2 id="headline"></h2>
+      <p><strong>Life stage:</strong> <span id="stage"></span></p>
+      <p id="tip"></p>
+    </div>
+  </section>
+
+  <section class="info-card">
+    <h3>GSD Growth & Aging Chart</h3>
+    <p>German Shepherds are "Large" breeds. They grow quickly but mature slowly.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>GSD Age</th>
+                <th>Human Equivalent</th>
+                <th>Milestone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>2 Weeks</td><td>9 Months</td><td>Eyes opening, wobbly crawling</td></tr>
+            <tr><td>4 Months</td><td>Toddler</td><td>Teething & high energy</td></tr>
+            <tr><td>1 Year</td><td>15 Years</td><td>Physical adult, mental teenager</td></tr>
+            <tr><td>2 Years</td><td>24 Years</td><td>Full skeletal maturity</td></tr>
+            <tr><td>7 Years</td><td>54 Years</td><td>Entering "Mature Adult" stage</td></tr>
+        </tbody>
+    </table>
+  </section>
+
+  <section class="faq-section">
+    <h3>Frequently Asked Questions</h3>
+    
+    <div class="faq-item">
+      <h4>When do German Shepherds stop growing?</h4>
+      <p>Physically, they reach their full height around 1 year, but they continue to "fill out" and gain muscle until they are 2 to 2.5 years old.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>What is the average lifespan of a GSD?</h4>
+      <p>Typically 9 to 13 years. Keeping them lean and supporting their joints early on can help extend their senior years.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>When should I switch to adult food?</h4>
+      <p>Because they are prone to joint issues, most vets recommend staying on large-breed puppy food until 12–18 months to ensure slow, steady bone growth.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 German Shepherd Resource • Educational use only</p>
+</footer>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <title>Labrador Age in Human Years (Vet-Aligned 2025)</title>
 <meta name="description" content="Calculate your Labrador’s age in human years using a modern veterinary ageing model. Free, accurate, instant.">
@@ -84,4 +165,4 @@
 
 <footer><p><a href="index.html">← Main Calculator</a></p></footer>
 </body>
-</html>
+</html> -->
