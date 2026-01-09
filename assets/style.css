@@ -146,7 +146,7 @@ td {
 }
 
 /* Responsive fix for smaller screens */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
     .health-grid {
         grid-template-columns: 1fr;
     }
