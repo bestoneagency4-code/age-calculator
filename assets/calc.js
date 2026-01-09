@@ -26,7 +26,7 @@ const dobInputEl = document.getElementById("dob");
 
 if (dobInputEl) {
   const max = new Date();
-  max.setDate(max.getDate() - 7); // must be at least 7 days old
+  max.setDate(max.getDate() - 60); // must be at least 7 days old
   dobInputEl.max = max.toISOString().split("T")[0];
 }
 
