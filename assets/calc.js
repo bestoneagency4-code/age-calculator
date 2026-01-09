@@ -1,97 +1,92 @@
-// Breed size ageing factors (post-2 years)
-const weightFactor = [4.6, 5.3, 5.6, 5.8, 6.0];
+// AAHA-informed aging factors (post-2 years)
+const aahaFactors = [4, 5, 6, 7]; // small → giant
 
-// Life-stage mapping
-const lifeStage = (h) => {
-  if (h < 30) return "Puppy / Adolescent";
-  if (h < 50) return "Young Adult";
+// Life stage labels
+function lifeStageByHumanAge(h) {
+  if (h < 15) return "Puppy";
+  if (h < 30) return "Young Adult";
+  if (h < 50) return "Adult";
   if (h < 65) return "Mature Adult";
   if (h < 80) return "Senior";
   return "Geriatric";
-};
-
-// Care tips per stage
-const tips = {
-  "Puppy / Adolescent": "Focus on training, vaccinations, and nutrition.",
-  "Young Adult": "Maintain annual vet exams and regular exercise.",
-  "Mature Adult": "Add dental care and joint support.",
-  "Senior": "Schedule twice-yearly vet checks and blood work.",
-  "Geriatric": "Use orthopedic bedding and monitor mobility closely."
-};
-
-/* -------------------------------
-   DOB INPUT CONSTRAINT (PRIMARY)
--------------------------------- */
-const dobInputEl = document.getElementById("dob");
-
-if (dobInputEl) {
-  const max = new Date();
-  max.setDate(max.getDate() - 60); // must be at least 7 days old
-  dobInputEl.max = max.toISOString().split("T")[0];
 }
 
-/* -------------------------------
-   CALCULATE HANDLER
--------------------------------- */
-document.getElementById("calcBtn").addEventListener("click", () => {
-  const dobValue = dobInputEl.value;
+// Care tips
+const tips = {
+  "Neonatal Puppy": "This puppy is in the neonatal stage. Focus on warmth, nursing, and veterinary guidance.",
+  "Early Puppy": "This is a critical socialization period. Focus on gentle handling, vaccinations, and safe exploration.",
+  "Puppy": "Continue training, socialization, and balanced nutrition.",
+  "Young Adult": "Maintain regular exercise and annual vet checkups.",
+  "Adult": "Monitor dental health and weight closely.",
+  "Mature Adult": "Add joint care and regular blood screening.",
+  "Senior": "Schedule twice-yearly veterinary exams.",
+  "Geriatric": "Focus on comfort, mobility support, and quality of life."
+};
 
-  // 1️⃣ Empty check
-  if (!dobValue) {
+document.getElementById("calcBtn").addEventListener("click", () => {
+  const dobInput = document.getElementById("dob").value;
+  if (!dobInput) {
     alert("Please select your dog’s birth date.");
     return;
   }
 
-  const dob = new Date(dobValue);
+  const dob = new Date(dobInput);
   const today = new Date();
 
-  // Normalize time (prevents timezone bugs)
-  dob.setHours(0, 0, 0, 0);
-  today.setHours(0, 0, 0, 0);
-
-  // 2️⃣ Invalid date guard
-  if (isNaN(dob.getTime())) {
-    alert("Invalid birth date.");
+  // Prevent future dates
+  if (dob > today) {
+    alert("Birth date cannot be in the future.");
     return;
   }
 
-  // 3️⃣ Future-date guard
-  if (dob >= today) {
-    alert("Birth date cannot be today or in the future.");
+  // Minimum age: 7 days
+  const ageDays = (today - dob) / (1000 * 60 * 60 * 24);
+  if (ageDays < 7) {
+    alert("Please enter a birth date at least 7 days ago.");
     return;
   }
 
-  // 4️⃣ Minimum age guard (7 days)
-  const minAllowed = new Date(today);
-  minAllowed.setDate(minAllowed.getDate() - 7);
+  const ageWeeks = ageDays / 7;
+  const ageYears = ageDays / 365.25;
 
-  if (dob > minAllowed) {
-    alert("Dog must be at least 7 days old.");
-    return;
+  const breed = parseInt(document.getElementById("breed").value);
+
+  const headline = document.getElementById("headline");
+  const stageEl = document.getElementById("stage");
+  const tipEl = document.getElementById("tip");
+
+  // 🍼 Neonatal: under 8 weeks
+  if (ageWeeks < 8) {
+    headline.textContent = "Human-age comparison is not applicable yet";
+    stageEl.textContent = "Neonatal Puppy";
+    tipEl.textContent = tips["Neonatal Puppy"];
   }
 
-  // Breed
-  const breed = parseInt(document.getElementById("breed").value, 10);
-
-  // Age calculation (years)
-  const age =
-    (today - dob) / (365.25 * 24 * 60 * 60 * 1000);
-
-  // Human age conversion
-  let humanAge;
-  if (age <= 1) {
-    humanAge = Math.round(31 * age);
-  } else if (age <= 2) {
-    humanAge = Math.round(31 + (age - 1) * 11);
-  } else {
-    humanAge = Math.round(42 + (age - 2) * weightFactor[breed]);
+  // 🐾 Early puppy: 8–16 weeks
+  else if (ageWeeks < 16) {
+    headline.textContent = "Comparable to a human infant";
+    stageEl.textContent = "Early Puppy";
+    tipEl.textContent = tips["Early Puppy"];
   }
 
-  const stage = lifeStage(humanAge);
+  // 🐕 Older puppies & adults
+  else {
+    let humanAge;
 
-  // Output
-  document.getElementById("hy").textContent = humanAge;
-  document.getElementById("stage").textContent = stage;
-  document.getElementById("tip").textContent = tips[stage];
+    if (ageYears < 1) {
+      humanAge = Math.round(ageYears * 15);
+    } else if (ageYears < 2) {
+      humanAge = Math.round(15 + (ageYears - 1) * 9);
+    } else {
+      humanAge = Math.round(24 + (ageYears - 2) * aahaFactors[breed]);
+    }
+
+    const stage = lifeStageByHumanAge(humanAge);
+
+    headline.textContent = `Your dog is approximately ${humanAge} human years old`;
+    stageEl.textContent = stage;
+    tipEl.textContent = tips[stage];
+  }
+
   document.getElementById("result").classList.remove("hidden");
 });
