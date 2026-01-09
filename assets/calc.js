@@ -1,6 +1,7 @@
 // Breed size ageing factors (post-2 years)
 const weightFactor = [4.6, 5.3, 5.6, 5.8, 6.0];
 
+// Life-stage mapping
 const lifeStage = (h) => {
   if (h < 30) return "Puppy / Adolescent";
   if (h < 50) return "Young Adult";
@@ -9,6 +10,7 @@ const lifeStage = (h) => {
   return "Geriatric";
 };
 
+// Care tips per stage
 const tips = {
   "Puppy / Adolescent": "Focus on training, vaccinations, and nutrition.",
   "Young Adult": "Maintain annual vet exams and regular exercise.",
@@ -17,48 +19,65 @@ const tips = {
   "Geriatric": "Use orthopedic bedding and monitor mobility closely."
 };
 
-// ---- Birth date constraints ----
-const dobInput = document.getElementById('dob');
+/* -------------------------------
+   DOB INPUT CONSTRAINT (PRIMARY)
+-------------------------------- */
+const dobInputEl = document.getElementById("dob");
 
-if (dobInput) {
-  const today = new Date();
-  today.setDate(today.getDate() - 7); // minimum 7 days old
-
-  const maxDate = today.toISOString().split('T')[0];
-  dobInput.setAttribute('max', maxDate);
+if (dobInputEl) {
+  const max = new Date();
+  max.setDate(max.getDate() - 7); // must be at least 7 days old
+  dobInputEl.max = max.toISOString().split("T")[0];
 }
 
-
+/* -------------------------------
+   CALCULATE HANDLER
+-------------------------------- */
 document.getElementById("calcBtn").addEventListener("click", () => {
-  const dobInput = document.getElementById("dob").value;
-if (!document.getElementById('dob').value) {
-  alert("Please select your dog’s birth date.");
-  return;
-}
+  const dobValue = dobInputEl.value;
 
-const dob = new Date(document.getElementById('dob').value);
-const today = new Date();
-today.setHours(0,0,0,0);
-
-if (dob > today) {
-  alert("Birth date cannot be in the future.");
-  return;
-}
-
-}
-
-  if (!dobInput) {
+  // 1️⃣ Empty check
+  if (!dobValue) {
     alert("Please select your dog’s birth date.");
     return;
   }
 
-
-  const breed = parseInt(document.getElementById("breed").value);
-  const dob = new Date(dobInput);
+  const dob = new Date(dobValue);
   const today = new Date();
 
-  const age = (today - dob) / (365.25 * 24 * 60 * 60 * 1000);
+  // Normalize time (prevents timezone bugs)
+  dob.setHours(0, 0, 0, 0);
+  today.setHours(0, 0, 0, 0);
 
+  // 2️⃣ Invalid date guard
+  if (isNaN(dob.getTime())) {
+    alert("Invalid birth date.");
+    return;
+  }
+
+  // 3️⃣ Future-date guard
+  if (dob >= today) {
+    alert("Birth date cannot be today or in the future.");
+    return;
+  }
+
+  // 4️⃣ Minimum age guard (7 days)
+  const minAllowed = new Date(today);
+  minAllowed.setDate(minAllowed.getDate() - 7);
+
+  if (dob > minAllowed) {
+    alert("Dog must be at least 7 days old.");
+    return;
+  }
+
+  // Breed
+  const breed = parseInt(document.getElementById("breed").value, 10);
+
+  // Age calculation (years)
+  const age =
+    (today - dob) / (365.25 * 24 * 60 * 60 * 1000);
+
+  // Human age conversion
   let humanAge;
   if (age <= 1) {
     humanAge = Math.round(31 * age);
@@ -70,6 +89,7 @@ if (dob > today) {
 
   const stage = lifeStage(humanAge);
 
+  // Output
   document.getElementById("hy").textContent = humanAge;
   document.getElementById("stage").textContent = stage;
   document.getElementById("tip").textContent = tips[stage];
