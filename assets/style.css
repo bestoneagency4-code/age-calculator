@@ -1,3 +1,47 @@
+/* ==========================
+   BREED GRID
+========================== */
+.breed-grid {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.breed-grid h2 {
+  margin-bottom: 1.5rem;
+}
+
+.breed-grid .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.breed-grid a {
+  background: #fff7ed;
+  border: 2px solid #d6c4ae;
+  border-radius: 6px;
+  padding: 1rem 0.75rem;
+  text-decoration: none;
+  color: var(--dark);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.breed-grid a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.breed-grid strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+
+.breed-grid span {
+  font-size: 0.75rem;
+  color: #777;
+}
+
 /* :root{
   --accent:#ff7b54;
   --dark:#222;
