@@ -1,12 +1,13 @@
 /* ==========================
-   FAQ ACCORDION
+   FAQ ACCORDION (CENTERED BOX, LEFT TEXT)
 ========================== */
 .faq-box {
-  width: 900px;
+  width: 100%;
+  max-width: 640px;
+  margin: 3rem auto 0;
   background: #fdf7ee;
   border-radius: 16px;
   padding: 2rem 1.5rem;
-  margin-top: 3rem;
 }
 
 .faq-box h2 {
@@ -28,6 +29,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: left; /* key */
 }
 
 .faq-box summary::-webkit-details-marker {
@@ -37,6 +39,7 @@
 .faq-box summary::after {
   content: "▾";
   font-size: 1.2rem;
+  margin-left: 1rem;
   transition: transform 0.2s ease;
 }
 
@@ -46,9 +49,12 @@
 
 .faq-box p {
   margin-top: 0.6rem;
-  color: #444;
   font-size: 0.95rem;
+  color: #444;
+  text-align: left; /* key */
+  line-height: 1.6;
 }
+
 
 /* ==========================
    BREED GRID
