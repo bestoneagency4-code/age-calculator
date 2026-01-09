@@ -31,9 +31,20 @@ if (dobInput) {
 
 document.getElementById("calcBtn").addEventListener("click", () => {
   const dobInput = document.getElementById("dob").value;
-  //  if (dob > new Date()) {
-  // alert("Birth date cannot be in the future.");
-  // return;
+if (!document.getElementById('dob').value) {
+  alert("Please select your dog’s birth date.");
+  return;
+}
+
+const dob = new Date(document.getElementById('dob').value);
+const today = new Date();
+today.setHours(0,0,0,0);
+
+if (dob > today) {
+  alert("Birth date cannot be in the future.");
+  return;
+}
+
 }
 
   if (!dobInput) {
