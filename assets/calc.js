@@ -105,3 +105,42 @@ document.getElementById("calcBtn").addEventListener("click", () => {
 
   document.getElementById("result").classList.remove("hidden");
 });
+//gsd
+// Set Date Limits (Max = 14 days ago)
+const todayDate = new Date();
+const fourteenDaysAgo = new Date(todayDate);
+fourteenDaysAgo.setDate(todayDate.getDate() - 14);
+document.getElementById("dob").setAttribute("max", fourteenDaysAgo.toISOString().split("T")[0]);
+
+const aahaFactors = [4, 5, 6, 7]; // GSD uses index 2 (Large)
+
+document.getElementById("calcBtn").addEventListener("click", () => {
+    const dobInput = document.getElementById("dob").value;
+    if (!dobInput) return alert("Please select a date.");
+
+    const dob = new Date(dobInput);
+    const today = new Date();
+    const ageDays = (today - dob) / (1000 * 60 * 60 * 24);
+    const ageYears = ageDays / 365.25;
+    const breed = parseInt(document.getElementById("breed").value);
+
+    const headline = document.getElementById("headline");
+    const stageEl = document.getElementById("stage");
+    const resultDiv = document.getElementById("result");
+
+    if (ageYears < 1) {
+        headline.textContent = "Comparable to a human toddler/child";
+        stageEl.textContent = "Puppy";
+    } else {
+        let humanAge;
+        if (ageYears < 2) {
+            humanAge = Math.round(15 + (ageYears - 1) * 9);
+        } else {
+            humanAge = Math.round(24 + (ageYears - 2) * aahaFactors[breed]);
+        }
+        headline.textContent = `Approximately ${humanAge} human years old`;
+        stageEl.textContent = humanAge < 30 ? "Young Adult" : "Adult";
+    }
+
+    resultDiv.classList.remove("hidden");
+});
