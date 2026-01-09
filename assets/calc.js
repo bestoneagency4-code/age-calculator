@@ -15,7 +15,7 @@ function lifeStageByHumanAge(h) {
 const tips = {
   "Neonatal Puppy": "This puppy is in the neonatal stage. Focus on warmth, nursing, and veterinary guidance.",
   "Early Puppy": "This is a critical socialization period. Focus on gentle handling, vaccinations, and safe exploration.",
-  "Puppy": "Continue training, socialization, and balanced nutrition.",
+  "Puppy": "Your puppy is growing rapidly! Continue training, socialization, and balanced puppy-specific nutrition.",
   "Young Adult": "Maintain regular exercise and annual vet checkups.",
   "Adult": "Monitor dental health and weight closely.",
   "Mature Adult": "Add joint care and regular blood screening.",
@@ -33,13 +33,11 @@ document.getElementById("calcBtn").addEventListener("click", () => {
   const dob = new Date(dobInput);
   const today = new Date();
 
-  // Prevent future dates
   if (dob > today) {
     alert("Birth date cannot be in the future.");
     return;
   }
 
-  // Minimum age: 7 days
   const ageDays = (today - dob) / (1000 * 60 * 60 * 24);
   if (ageDays < 7) {
     alert("Please enter a birth date at least 7 days ago.");
@@ -47,8 +45,8 @@ document.getElementById("calcBtn").addEventListener("click", () => {
   }
 
   const ageWeeks = ageDays / 7;
+  const ageMonths = ageDays / 30.44; // Average days in a month
   const ageYears = ageDays / 365.25;
-
   const breed = parseInt(document.getElementById("breed").value);
 
   const headline = document.getElementById("headline");
@@ -57,7 +55,7 @@ document.getElementById("calcBtn").addEventListener("click", () => {
 
   // 🍼 Neonatal: under 8 weeks
   if (ageWeeks < 8) {
-    headline.textContent = "Human-age comparison is not applicable yet";
+    headline.textContent = "Developmental Stage: Neonatal";
     stageEl.textContent = "Neonatal Puppy";
     tipEl.textContent = tips["Neonatal Puppy"];
   }
@@ -69,20 +67,26 @@ document.getElementById("calcBtn").addEventListener("click", () => {
     tipEl.textContent = tips["Early Puppy"];
   }
 
-  // 🐕 Older puppies & adults
+  // 🐕 Puppy: 16 weeks to 12 months (Descriptive only)
+  else if (ageYears < 1) {
+    headline.textContent = "Comparable to a human toddler/child";
+    stageEl.textContent = "Puppy";
+    tipEl.textContent = tips["Puppy"];
+  }
+
+  // 🐕 Adults (1 year and older)
   else {
     let humanAge;
 
-    if (ageYears < 1) {
-      humanAge = Math.round(ageYears * 15);
-    } else if (ageYears < 2) {
+    if (ageYears < 2) {
+      // 1 to 2 years old
       humanAge = Math.round(15 + (ageYears - 1) * 9);
     } else {
+      // 2+ years old
       humanAge = Math.round(24 + (ageYears - 2) * aahaFactors[breed]);
     }
 
     const stage = lifeStageByHumanAge(humanAge);
-
     headline.textContent = `Your dog is approximately ${humanAge} human years old`;
     stageEl.textContent = stage;
     tipEl.textContent = tips[stage];
