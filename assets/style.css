@@ -2,7 +2,7 @@
    FAQ ACCORDION
 ========================== */
 .faq-box {
-  width: 100%;
+  width: 900px;
   background: #fdf7ee;
   border-radius: 16px;
   padding: 2rem 1.5rem;
@@ -10,7 +10,7 @@
 }
 
 .faq-box h2 {
-  text-align: center;
+  text-align: left-alignment;
   margin-bottom: 1.5rem;
   font-size: 1.4rem;
 }
