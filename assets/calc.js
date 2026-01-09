@@ -37,6 +37,9 @@ document.getElementById("calcBtn").addEventListener("click", () => {
     alert("Please select your dog’s birth date.");
     return;
   }
+ if (dob > new Date()) {
+  alert("Birth date cannot be in the future.");
+  return;
 
   const breed = parseInt(document.getElementById("breed").value);
   const dob = new Date(dobInput);
