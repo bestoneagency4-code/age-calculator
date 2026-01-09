@@ -31,9 +31,9 @@ if (dobInput) {
 
 document.getElementById("calcBtn").addEventListener("click", () => {
   const dobInput = document.getElementById("dob").value;
-   if (dob > new Date()) {
-  alert("Birth date cannot be in the future.");
-  return;
+  //  if (dob > new Date()) {
+  // alert("Birth date cannot be in the future.");
+  // return;
 }
 
   if (!dobInput) {
