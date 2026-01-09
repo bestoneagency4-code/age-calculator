@@ -23,6 +23,20 @@ const tips = {
   "Geriatric": "Focus on comfort, mobility support, and quality of life."
 };
 
+// Calculate the date exactly 14 days ago from today
+const todayDate = new Date();
+const fourteenDaysAgo = new Date(todayDate);
+fourteenDaysAgo.setDate(todayDate.getDate() - 14);
+
+// Format to YYYY-MM-DD for the HTML input
+const maxDate = fourteenDaysAgo.toISOString().split("T")[0];
+
+// Apply the restriction to the date picker
+const dateInput = document.getElementById("dob");
+dateInput.setAttribute("max", maxDate);
+
+// Rest of your existing logic starts here...
+
 document.getElementById("calcBtn").addEventListener("click", () => {
   const dobInput = document.getElementById("dob").value;
   if (!dobInput) {
@@ -32,18 +46,15 @@ document.getElementById("calcBtn").addEventListener("click", () => {
 
   const dob = new Date(dobInput);
   const today = new Date();
-
-  if (dob > today) {
-    alert("Birth date cannot be in the future.");
-    return;
-  }
-
+  
+  // Calculate difference in days
   const ageDays = (today - dob) / (1000 * 60 * 60 * 24);
-  if (ageDays < 7) {
-    alert("Please enter a birth date at least 7 days ago.");
+
+  // If the user bypasses the UI restriction somehow:
+  if (ageDays < 14) {
+    alert("This calculator is designed for puppies 2 weeks (14 days) and older.");
     return;
   }
-
   const ageWeeks = ageDays / 7;
   const ageMonths = ageDays / 30.44; // Average days in a month
   const ageYears = ageDays / 365.25;
