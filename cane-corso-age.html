@@ -15,6 +15,35 @@
   <p>Ancient Guardian: From Puppy to Senior Mastiff</p>
 </header>
 <main>
+   <section class="calc-box">
+
+    <label for="breed">Breed / Size Group</label>
+    <select id="breed">
+      <option value="0">Small (≤ 20 lbs)</option>
+      <option value="1">Medium (21–50 lbs)</option>
+      <option value="2">Large (51–90 lbs)</option>
+      <option value="3">Giant (> 90 lbs)</option>
+    </select>
+
+    <label for="dob">Dog’s Date of Birth</label>
+    <input type="date" id="dob" required />
+    <small class="hint">
+  Puppies must be at least 14 days old to use this calculator.
+</small>
+
+    <small class="hint">
+      Puppies under 12 months are shown in developmental stages, not human years.
+    </small>
+
+    <button id="calcBtn">Calculate</button>
+
+    <div id="result" class="hidden">
+      <h2 id="headline"></h2>
+      <p><strong>Life stage:</strong> <span id="stage"></span></p>
+      <p id="tip"></p>
+    </div>
+
+  </section>
   <section class="info-card">
     <h2>Growth & Aging Milestones</h2>
     <p>Cane Corsos are giant breed mastiffs that mature slower than medium-sized dogs. They reach physical maturity at 18-24 months but continue developing mentally until age 3.</p>
