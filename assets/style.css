@@ -1,6 +1,6 @@
 /* ==========================
    FAQ ACCORDION (CENTERED BOX, LEFT TEXT)
-========================== */
+==========================
 .faq-box {
   width: 100%;
   max-width: 640px;
@@ -29,7 +29,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  text-align: left; /* key */
+  text-align: left; 
 }
 
 .faq-box summary::-webkit-details-marker {
@@ -51,14 +51,11 @@
   margin-top: 0.6rem;
   font-size: 0.95rem;
   color: #444;
-  text-align: left; /* key */
+  text-align: left;
   line-height: 1.6;
 }
 
 
-/* ==========================
-   BREED GRID
-========================== */
 .breed-grid {
   margin-top: 3rem;
   text-align: center;
@@ -98,7 +95,7 @@
 .breed-grid span {
   font-size: 0.75rem;
   color: #777;
-}
+}*/
 
 //gsd style
 /* --- Table Enhancements --- */
@@ -150,7 +147,7 @@ td {
     .health-grid {
         grid-template-columns: 1fr;
     }
-}
+} */
 
 /* --- Base Styles --- */
 :root {
