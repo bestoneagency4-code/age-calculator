@@ -23,10 +23,10 @@ const tips = {
   "Geriatric": "Focus on comfort, mobility support, and quality of life."
 };
 
-// Calculate the date exactly 14 days ago from today
+// Calculate the date exactly 7 days ago from today
 const todayDate = new Date();
 const fourteenDaysAgo = new Date(todayDate);
-fourteenDaysAgo.setDate(todayDate.getDate() - 14);
+fourteenDaysAgo.setDate(todayDate.getDate() - 7);
 
 // Format to YYYY-MM-DD for the HTML input
 const maxDate = fourteenDaysAgo.toISOString().split("T")[0];
@@ -51,8 +51,8 @@ document.getElementById("calcBtn").addEventListener("click", () => {
   const ageDays = (today - dob) / (1000 * 60 * 60 * 24);
 
   // If the user bypasses the UI restriction somehow:
-  if (ageDays < 14) {
-    alert("This calculator is designed for puppies 2 weeks (14 days) and older.");
+  if (ageDays < 7) {
+    alert("This calculator is designed for puppies 7 days and older.");
     return;
   }
   const ageWeeks = ageDays / 7;
